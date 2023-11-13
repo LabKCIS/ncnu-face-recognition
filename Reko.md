@@ -3,6 +3,7 @@
 ---
 # AWS Rekognition(車牌辨識) With Line Notify 實作
 ## 架構圖
+
 *
 使用AWS S3,Lambda,Rekognition,DynamoDB等服務
 並把上傳到S3的圖檔做車牌辨識,結果透過Line Notify通知
