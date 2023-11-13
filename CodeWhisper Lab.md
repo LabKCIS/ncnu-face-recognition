@@ -47,7 +47,7 @@
 按Enter繼續按Alt+C,會出現
 ![image](https://hackmd.io/_uploads/HJUE45yN6.png)
 
-#### 從1列印到10 for loop(Interaction)
+#### 從1列印到10 for loop(Ineraction)
 ```python=
 # a for loop print 1 to 10
 ```
