@@ -35,13 +35,12 @@
 ![image](https://hackmd.io/_uploads/B11km9JVT.png)
 
 按Tab選擇
-```python=
-#define a int variable ,name is speed, and its value is 100
-```
-![image](https://hackmd.io/_uploads/Bk6pX5kEa.png)
+接下來輸入判斷部分的註釋
 ```python=
 #check speed value,if speed greater then 100, print high speed , else print not high speed
 ```
+![image](https://hackmd.io/_uploads/Bk6pX5kEa.png)
+
 按Enter繼續按Alt+C,
 ![image](https://hackmd.io/_uploads/B1ehWE5yVa.png)
 按Enter繼續按Alt+C,會出現
