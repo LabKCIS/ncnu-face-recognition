@@ -28,7 +28,7 @@
 
 ![image](https://hackmd.io/_uploads/BJHf0Yk4T.png)
 
-#### 輸入speed 變數判斷式提式語(Selection)
+#### 輸入定義speed 變數提示語
 ```
 #define a int variable ,name is speed, and its value is 100
 ```
