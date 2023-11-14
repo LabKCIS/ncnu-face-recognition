@@ -15,7 +15,7 @@ https://s3-us-west-2.amazonaws.com/us-west-2-aws-training/awsu-spl/spl-88/2.3.15
 
 ## 建立縮圖Lambda
 ### AWS Console 搜尋Lambda
-![image](https://hackmd.io/_uploads/ByYMH_y4a.png)
+
 ### 點擊Create function
 ![image](https://hackmd.io/_uploads/HkpBrukEp.png)
 ### 輸入設定值
