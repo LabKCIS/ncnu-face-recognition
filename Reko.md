@@ -43,9 +43,9 @@ Block all public access設定取消,並點選Turning off block all public access
 	]
 }
 ```
-:::success
+--------------------------------
 其中xxxxx請改為新建立的Bucket Name
-:::
+--------------------------------
 
 
 ## 申請LineNotify 權杖
@@ -81,9 +81,9 @@ https://notify-bot.line.me/my/
 2.相關設定如下
 ![image](https://hackmd.io/_uploads/BJb1FbTQ6.png)
 
-:::info
+---------------------
 TableName:car_parking
-:::
+---------------------
 
 
 
@@ -277,9 +277,9 @@ def ocr(Bucket,key):
         print("-")
     return  result
 ```
-:::success
+------------------------------------
 每次改動Lambda之後都需要重新執行Deploy
-:::
+------------------------------------
 
 ![image](https://hackmd.io/_uploads/rJacMd6Xp.png)
 
@@ -413,9 +413,9 @@ code/add layer
 | BUCKET_NAME |  XXXXX     |
 
 
-:::success
+---------------------------------
 其中xxxxx請改為新建立的Bucket Name
-:::
+---------------------------------
 
 
 7.程式碼如下
@@ -724,11 +724,11 @@ def insertDB(created,car_no,fileName):
     print(f'Insert response: {response}')
 ```
 ### LineNotify部分
-:::success
+----------------------------------------
 Line Notify呼叫兩次
 第一次顯示辨識結果/原始圖片
 第二次顯示QR Code Message/產生的QRCode圖檔
-:::
+----------------------------------------
 程式碼
 ```
 import json
