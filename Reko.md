@@ -82,7 +82,7 @@ https://notify-bot.line.me/my/
 ![image](https://hackmd.io/_uploads/BJb1FbTQ6.png)
 
 
-*TableName:car_parking*
+*Table Name: car_parking*
 
 
 
