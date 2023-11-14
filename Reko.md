@@ -796,7 +796,7 @@ def lambda_handler(event, context):
         "file_name_prefix"      : created
     }    
     response = client.invoke(
-        FunctionName = f'arn:aws:lambda:{region}:{accountid}:function:Gen_QRCode',
+        FunctionName = f'arn:aws:lambda:{region}:{accountid}:function:GenQRCodeLambda',
         InvocationType = 'RequestResponse',
         Payload = json.dumps(inputParams)
     )   
