@@ -43,9 +43,9 @@ Block all public access設定取消,並點選Turning off block all public access
 	]
 }
 ```
---------------------------------
-其中xxxxx請改為新建立的Bucket Name
---------------------------------
+
+*其中xxxxx請改為新建立的Bucket Name*
+
 
 
 ## 申請LineNotify 權杖
@@ -589,9 +589,9 @@ def lambda_handler(event, context):
 | S3_PREFIX              | https://XXXXX.s3.amazonaws.com/QRCode/    |
 | S3\_UPLOAD\_IMG_PREFIX | https://XXXXX.s3.amazonaws.com/car_image/ |
 
-:::success
-其中xxxxx請改為新建立的Bucket Name
-:::
+
+*其中xxxxx請改為新建立的Bucket Name*
+
 
 7.設定Test Event(單元測試)
 ![image](https://hackmd.io/_uploads/BJxS9zRQp.png)
