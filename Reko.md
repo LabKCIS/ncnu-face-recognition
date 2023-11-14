@@ -97,9 +97,11 @@ https://notify-bot.line.me/my/
 
 ## 新增Lambda Layer儲存的S3 Bucket
 1.新增S3 Bucket
-2.下載lambda layer 
+
+2.下載lambda layer
 下載網址如下
 https://github.com/LabKCIS/ncnu-face-recognition/blob/main/QRCode-Layer/lambda-layer-qrcode.zip
+
 3.上傳QRCode Layer到S3 Bucket
 ![image](https://hackmd.io/_uploads/HkwAHfpXT.png)
 4.上傳結果
