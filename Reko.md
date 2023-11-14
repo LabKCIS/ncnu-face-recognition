@@ -467,6 +467,10 @@ def lambda_handler(event, context):
   "file_name_prefix": "12345678"
 }
 ```
+| Name      | Description       |
+| --------- | ----------------- |
+| text      | QRCode Scan結果文字 |
+| file_name_prefix | 圖檔檔名Prefix |
 9.執行單元測試
 ![image](https://hackmd.io/_uploads/SyAvAhAQa.png)
 
@@ -474,10 +478,7 @@ S3 Console查看結果
 ![image](https://hackmd.io/_uploads/Sk8h4IRm6.png)
 
 
-| Name      | Description       |
-| --------- | ----------------- |
-| text      | QRCode Scan結果文字 |
-| file_name_prefix | 圖檔檔名Prefix |
+
 
 
 ## 新增Line Notify Lambda
