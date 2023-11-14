@@ -44,6 +44,11 @@ CreateThumbnail.handler
 ![image](https://hackmd.io/_uploads/r18lKukVT.png)
 並點擊Save
 
+### 設定執行Time Out
+![image](https://hackmd.io/_uploads/BkXKqx6Qp.png)
+按Edit會出現下列的畫面
+![image](https://hackmd.io/_uploads/BypTcgTmp.png)
+修改完成後按Save
 ### Lambda 設定Trigger
 ![image](https://hackmd.io/_uploads/ByPKYu14p.png)
 #### 選擇S3(從哪一個Bucket發動)
