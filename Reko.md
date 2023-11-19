@@ -458,8 +458,11 @@ def lambda_handler(event, context):
 8.設定Test Event(單元測試)
 ![image](https://hackmd.io/_uploads/BJxS9zRQp.png)
 輸入名稱跟設定值,確定之後按Save
-![image](https://hackmd.io/_uploads/SJcxjGA7a.png)
+![image](https://github.com/LabKCIS/ncnu-face-recognition/assets/187520/72352428-d034-4a70-868d-97600e23c3e5)
+
+
 設定值範例
+
 ```=
 {
   "text": "AWS Test",
