@@ -594,7 +594,7 @@ def lambda_handler(event, context):
 
 *其中xxxxx請改為新建立的Bucket Name*
 
-Note:實際的HTTP Link 請參考
+Note:實際的HTTPS Link 請參考S3設定(下圖的Region是在美西)
 ![image](https://github.com/LabKCIS/ncnu-face-recognition/assets/187520/f2231d12-7302-4411-956d-4da6e62b8952)
 
 7.設定Test Event(單元測試)
