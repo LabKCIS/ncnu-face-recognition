@@ -1,5 +1,5 @@
-# CodeWhisper Lab
-## 建立一個Cloud 9 IDE Instance
+# CodeWhisper Lab(Rename to developer Q)
+## 建立一個Cloud 9 IDE Instance(此服務以Retire)
 ### AWS Console搜尋 Cloud 9
 ![image](https://hackmd.io/_uploads/BJeBqKyNT.png)
 ### 點擊Create environment
