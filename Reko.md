@@ -884,3 +884,298 @@ Line Notify結果如下
 ![image](https://hackmd.io/_uploads/S18lu8R76.png)
 
 ![image](https://hackmd.io/_uploads/rkdZ_L0m6.png)
+
+# Revise By GPT
+Prompt:請用易於維護,更容易理解的角度修改此Python
+修改結果:
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import json
+import base64
+import boto3
+from datetime import datetime
+import os
+from botocore.exceptions import ClientError
+
+# 環境變量
+DYNAMODB_TABLE = os.environ['DYNAMODB_TABLE']
+GEN_QRCODE_LAMBDA = os.environ['GEN_QRCODE_LAMBDA']
+SEND_LINE_NOTIFY_LAMBDA = os.environ['SEND_LINE_NOTIFY_LAMBDA']
+
+# 初始化 AWS 服務客戶端
+s3_client = boto3.client('s3')
+dynamodb = boto3.resource('dynamodb')
+rekognition_client = boto3.client('rekognition')
+lambda_client = boto3.client('lambda')
+
+def lambda_handler(event, context):
+    try:
+        # 從 S3 事件中獲取資訊
+        bucket_name, file_name = get_s3_info(event)
+        print(f'Processing file: {file_name} from bucket: {bucket_name}')
+
+        # 執行 OCR
+        car_number = perform_ocr(bucket_name, file_name)
+
+        # 生成時間戳
+        timestamp = int(datetime.now().timestamp())
+
+        # 插入 DynamoDB
+        insert_parking_record(timestamp, car_number, file_name)
+
+        # 生成 QR 碼
+        generate_qr_code(car_number, timestamp)
+
+        # 發送 Line 通知
+        send_line_notifications(car_number, file_name, timestamp)
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps({'message': 'Processing completed successfully', 'car_number': car_number})
+        }
+    except Exception as e:
+        print(f"Error in lambda_handler: {str(e)}")
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'error': str(e)})
+        }
+
+def get_s3_info(event):
+    """從 S3 事件中提取桶名和檔案名"""
+    s3_event = event['Records'][0]['s3']
+    return s3_event['bucket']['name'], s3_event['object']['key']
+
+def perform_ocr(bucket_name, file_name):
+    """使用 Rekognition 進行 OCR"""
+    try:
+        response = rekognition_client.detect_text(Image={'S3Object': {'Bucket': bucket_name, 'Name': file_name}})
+        detected_texts = response['TextDetections']
+        
+        # 假設我們只需要第一個檢測到的文本
+        if detected_texts:
+            return detected_texts[0]['DetectedText']
+        else:
+            raise ValueError("No text detected in the image")
+    except ClientError as e:
+        print(f"Error in OCR: {e}")
+        raise
+
+def insert_parking_record(timestamp, car_number, file_name):
+    """向 DynamoDB 插入停車記錄"""
+    table = dynamodb.Table(DYNAMODB_TABLE)
+    try:
+        response = table.put_item(
+            Item={
+                'created': timestamp,
+                'car_no': car_number,
+                'enter_image': file_name,
+                'exit_image': "None",
+                'exit_time': 0,
+                'status': 'enter'
+            }
+        )
+        print(f"DynamoDB insert response: {response}")
+    except ClientError as e:
+        print(f"Error inserting into DynamoDB: {e}")
+        raise
+
+def generate_qr_code(car_number, timestamp):
+    """調用 QR 碼生成 Lambda"""
+    try:
+        payload = {
+            "text": {"car_no": car_number},
+            "file_name_prefix": timestamp
+        }
+        lambda_client.invoke(
+            FunctionName=GEN_QRCODE_LAMBDA,
+            InvocationType='Event',
+            Payload=json.dumps(payload)
+        )
+    except ClientError as e:
+        print(f"Error invoking QR code Lambda: {e}")
+        raise
+
+def send_line_notifications(car_number, file_name, timestamp):
+    """發送 Line 通知"""
+    try:
+        # 發送原始圖像通知
+        send_notification({
+            "text": f"Parking_info/Identify Result: {car_number}",
+            "file_name": file_name.split("/")[-1],
+            "type": "original"
+        })
+
+        # 發送 QR 碼通知
+        send_notification({
+            "text": "paying_qrcode",
+            "file_name": f"{timestamp}.png",
+            "type": "qrcode"
+        })
+    except ClientError as e:
+        print(f"Error sending Line notifications: {e}")
+        raise
+
+def send_notification(payload):
+    """調用 Line Notify Lambda"""
+    lambda_client.invoke(
+        FunctionName=SEND_LINE_NOTIFY_LAMBDA,
+        InvocationType='Event',
+        Payload=json.dumps(payload)
+    )
+```
+輸入三個設定
+
+
+![image](https://hackmd.io/_uploads/HyTdHSdnC.png)
+
+| Key | Value  |
+|-|-|
+| DYNAMODB_TABLE | car_parking  |
+| GEN\_QRCODE\_LAMBDA | GenQRCodeLambda  |
+| SEND\_LINE\_NOTIFY_LAMBDA | SendLineNotify  |
+
+主要的改進包括：
+
+1. **模組化**：將不同的功能分解為獨立的函數，每個函數負責一個特定的任務。
+
+2. **錯誤處理**：在每個函數中添加了異常處理，以捕獲和記錄特定的錯誤。
+
+3. **使用環境變量**：將配置信息（如表名和其他 Lambda 函數名）移到環境變量中。
+
+4. **註釋**：為每個函數添加了 docstring，解釋其功能。
+
+5. **一致的命名**：使用更一致和描述性的變量名。
+
+6. **簡化邏輯**：例如，在 OCR 函數中，我們假設只需要第一個檢測到的文本。
+
+7. **提前初始化客戶端**：在全局範圍內初始化 AWS 服務客戶端，以便在 Lambda 容器重用時提高效率。
