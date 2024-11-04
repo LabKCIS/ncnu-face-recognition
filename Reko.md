@@ -887,7 +887,9 @@ Line Notify結果如下
 
 # Revise By GPT
 Prompt:請用易於維護,更容易理解的角度修改此Python
+
 修改結果:
+
 ```
 import json
 import base64
